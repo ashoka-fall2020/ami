@@ -21,12 +21,12 @@ jobs:
 
       # build artifact
       - name: Build Artifact
-        uses: ctions/ashokaparna@main
+        uses: actions/ashokaparna@main
         with:
-          command: build \
-            -var "aws_region=${AWS_REGION}" \
-            -var "aws_access_key=${AWS_ACCESS_KEY}" \
-            -var "aws_secret_key=${AWS_SECRET_KEY}" \
-            -var "subnet_id=${SUBNET_ID}" \
-            ami.json
+          command: build
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          subnet_id: ${{ secrets.SUBNET_ID}}
+          target: ami.json
           arguments: "-color=false -on-error=abort"
