@@ -6,3 +6,9 @@ crash.log
 
 # For built boxes
 *.box
+
+# For Mac related files
+.DS_Store
+
+#For ide files
+.idea/
