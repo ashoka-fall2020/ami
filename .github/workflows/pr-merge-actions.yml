@@ -2,7 +2,7 @@ name: On push ami build with Packer workflow
 on:
   push:
     branches:
-      - master
+      - main
 jobs:
   packer:
     runs-on: ubuntu-latest
