@@ -23,9 +23,9 @@ jobs:
       # build ami using packer
       - name: Build ami
         env:
-          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          AWS_ACCESS_KEY_ID: ${{secrets.AWS_ACCESS_KEY_ID}}
+          AWS_SECRET_ACCESS_KEY: ${{secrets.AWS_SECRET_ACCESS_KEY}}
           AWS_REGION: ${{secrets.AWS_REGION}}
           SUBNET_ID: ${{secrets.SUBNET_ID}}
 
-        run: packer build -var 'aws_access_key=AKIA4ARP56NCB6FE32MI' -var 'aws_secret_key=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' -var 'aws_region=us-east-1' -var 'subnet_id=subnet-a2c780ef' ami.json
+        run: packer build -var 'aws_access_key=${{secrets.AWS_ACCESS_KEY}}' -var 'aws_secret_key=${{secrets.AWS_SECRET_KEY}}' -var 'aws_region=${{secrets.AWS_REGION}}' -var 'subnet_id=${{secrets.SUBNET_ID}}' ami.json
