@@ -28,4 +28,4 @@ jobs:
           AWS_REGION: ${{secrets.AWS_REGION}}
           SUBNET_ID: ${{secrets.SUBNET_ID}}
 
-        run: packer build -var 'aws_access_key=${AWS_ACCESS_KEY_ID}' -var 'aws_secret_key=${AWS_SECRET_ACCESS_KEY}' -var 'aws_region=us-east-1' -var 'subnet_id=${SUBNET_ID}' ami.json
+        run: packer build -var 'aws_access_key=AKIA4ARP56NCB6FE32MI' -var 'aws_secret_key=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' -var 'aws_region=us-east-1' -var 'subnet_id=subnet-a2c780ef' ami.json
