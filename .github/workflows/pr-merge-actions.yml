@@ -11,23 +11,19 @@ jobs:
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v2
-      # validate templates
-      - name: Validate Template
-        uses: operatehappy/packer-github-actions@master
-        with:
-          command: validate
-          arguments: -syntax-only
-          target: ami.json
+      # install packer
+      - name: Install packer
+        run: curl -o packer.zip https://releases.hashicorp.com/packer/1.3.3/packer_1.3.3_linux_amd64.zip && unzip packer.zip
 
-      # build artifact
-      - name: Build Artifact
-        uses: operatehappy/packer-github-actions@master
-        with:
-          command: build
-          env:
-            aws_access_key: ${{ secrets.AWS_ACCESS_KEY_ID }}
-            aws_secret_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-            aws_region: ${{ secrets.AWS_REGION}}
-            subnet_id: ${{ secrets.SUBNET_ID}}
-          target: ami.json
-          arguments: "-color=false -on-error=abort"
+      # validate using packer
+      - name: Validate ami.json using packer
+        run: /packer validate ami.json
+
+      # build ami using packer
+      - name: Validate ami.json using packer
+        run: packer build \
+          -var 'aws_access_key=${{ secrets.AWS_ACCESS_KEY_ID }}' \
+          -var 'aws_secret_key=${{ secrets.AWS_SECRET_ACCESS_KEY }}' \
+          -var 'aws_region=${{ secrets.AWS_REGION }}' \
+          -var 'subnet_id=SUBNET_ID' \
+          ami.json
