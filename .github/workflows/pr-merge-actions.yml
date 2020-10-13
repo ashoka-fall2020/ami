@@ -21,10 +21,5 @@ jobs:
         run: packer validate ami.json
 
       # build ami using packer
-      - name: Validate ami.json using packer
-        run: packer build \
-          -var 'aws_access_key=${{ secrets.AWS_ACCESS_KEY_ID }}' \
-          -var 'aws_secret_key=${{ secrets.AWS_SECRET_ACCESS_KEY }}' \
-          -var 'aws_region=${{ secrets.AWS_REGION }}' \
-          -var 'subnet_id=SUBNET_ID' \
-          ami.json
+      - name: Build ami
+        run: packer build -var 'aws_access_key=${{ secrets.AWS_ACCESS_KEY_ID }}' -var 'aws_secret_key=${{ secrets.AWS_SECRET_ACCESS_KEY }}' -var 'aws_region=${{ secrets.AWS_REGION }}' -var 'subnet_id=SUBNET_ID' ami.json
