@@ -3,7 +3,6 @@ on:
   push:
     branches:
       - main
-      - a4
 jobs:
   packer:
     runs-on: ubuntu-latest
