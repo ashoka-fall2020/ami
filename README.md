@@ -1,10 +1,10 @@
 # AMI - Packer
-##Project Description
+## Project Description
 Build AMI using packer
-##Requirement
+## Requirement
 1. Packer
 2. AWS account 
-##Project set up
+## Project set up
 1. Clone the project using https://github.com/ashoka-fall2020/webapp.git
 2. Install packer in your system. For Mac you can use the command `brew install packer`
 3. In the terminal go to the `ami` directory
@@ -19,5 +19,5 @@ packer build \
     -var 'ami_users=REDACTED' \
     ami.json`
  ````
-##Deploy
+## Deploy
 1. Go to your AWS console and launch an EC2 instance with the new AMI
