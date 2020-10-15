@@ -1,4 +1,4 @@
-# AMI - Packer
+# Packer - AMI
 ## Project Description
 Build AMI using packer
 ## Requirement
