@@ -39,7 +39,17 @@
             "inline": [
                 "sudo apt-get update",
                 "curl -sL https://deb.nodesource.com/setup_10.x | sudo -E bash -",
-                "sudo apt-get install -y nodejs"
+                "sudo apt-get install -y nodejs",
+                "sudo apt-get install ruby -y",
+                "sudo apt-get install wget -y",
+                "sudo apt-get install unzip -y",
+                "cd /home/ubuntu",
+                "wget https://aws-codedeploy-{{user `aws_region`}}.s3.{{user `aws_region`}}.amazonaws.com/latest/install",
+                "echo 'code deploy agent installation'",
+                "sudo chmod +x ./install",
+                "sudo ./install auto",
+                "sudo service codedeploy-agent start",
+                "sudo service codedeploy-agent status"
             ]
         }
     ]
